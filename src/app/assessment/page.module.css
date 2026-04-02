@@ -1,0 +1,89 @@
+.header {
+  background: var(--maroon-dark);
+  padding: 3rem 2rem 2.5rem;
+  text-align: center;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(200, 151, 58, 0.25);
+  color: var(--gold-light);
+  border: 1px solid rgba(200, 151, 58, 0.4);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--maroon-dark);
+  margin-bottom: 1rem;
+}
+
+.intro {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.icon {
+  font-size: 24px;
+  margin-bottom: 0.75rem;
+}
+
+.cardTitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  color: var(--maroon-dark);
+  margin-bottom: 0.4rem;
+}
+
+.cardDesc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.status {
+  display: inline-block;
+  font-size: 11px;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  background: var(--cream-dark);
+  color: var(--text-muted);
+}
