@@ -19,7 +19,7 @@ export default function LessonCard({ lesson, index }: { lesson: Lesson; index: n
 
   return (
     <div className={styles.card}>
-      <button className={styles.head} onClick={() => setOpen(!open)}>
+      <button className={styles.head} onClick={(e) => { e.stopPropagation(); setOpen(!open); }}>
         <div className={styles.num}>{index + 1}</div>
         <h4 className={styles.headTitle}>{lesson.title}</h4>
         <div className={styles.tags}>
