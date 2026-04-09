@@ -17,9 +17,19 @@ export default function LessonCard({ lesson, index }: { lesson: Lesson; index: n
   const hasArticle = !!lesson.article_url
   const ytId = lesson.youtube_url ? getYouTubeId(lesson.youtube_url) : null
 
+  function handleToggle(e: React.MouseEvent) {
+    e.preventDefault()
+    e.stopPropagation()
+    setOpen(prev => !prev)
+  }
+
   return (
     <div className={styles.card} onClick={(e) => e.stopPropagation()}>
-      <button className={styles.head} onClick={(e) => { e.stopPropagation(); setOpen(!open); }}>
+      <button
+        type="button"
+        className={styles.head}
+        onClick={handleToggle}
+      >
         <div className={styles.num}>{index + 1}</div>
         <h4 className={styles.headTitle}>{lesson.title}</h4>
         <div className={styles.tags}>
@@ -32,7 +42,7 @@ export default function LessonCard({ lesson, index }: { lesson: Lesson; index: n
       </button>
 
       {open && (
-        <div className={styles.body}>
+        <div className={styles.body} onClick={(e) => e.stopPropagation()}>
           {lesson.description && <p className={styles.desc}>{lesson.description}</p>}
 
           {ytId && (

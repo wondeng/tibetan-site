@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { getLessons, Lesson } from '@/lib/supabase'
 import LessonCard from './LessonCard'
 import styles from './CoursePage.module.css'
@@ -16,13 +16,22 @@ export default function CoursePage({ level, badge, title, subtitle }: Props) {
   const [lessons, setLessons] = useState<Lesson[]>([])
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
+  const fetchLessons = useCallback((sem: 'fall' | 'spring') => {
     setLoading(true)
-    getLessons(level, semester).then(data => {
+    setLessons([])
+    getLessons(level, sem).then(data => {
       setLessons(data)
       setLoading(false)
     })
-  }, [level, semester])
+  }, [level])
+
+  useEffect(() => {
+    fetchLessons(semester)
+  }, [semester, fetchLessons])
+
+  function handleSemester(sem: 'fall' | 'spring') {
+    setSemester(sem)
+  }
 
   return (
     <div>
@@ -34,20 +43,22 @@ export default function CoursePage({ level, badge, title, subtitle }: Props) {
 
       <div className={styles.tabs}>
         <button
+          type="button"
           className={`${styles.tab} ${semester === 'fall' ? styles.active : ''}`}
-          onClick={(e) => { e.stopPropagation(); setSemester('fall') }}
+          onClick={() => handleSemester('fall')}
         >
           Fall Semester
         </button>
         <button
+          type="button"
           className={`${styles.tab} ${semester === 'spring' ? styles.active : ''}`}
-          onClick={(e) => { e.stopPropagation(); setSemester('spring') }}
+          onClick={() => handleSemester('spring')}
         >
           Spring Semester
         </button>
       </div>
 
-      <div className={styles.lessonsArea} onClick={(e) => e.stopPropagation()}>
+      <div className={styles.lessonsArea}>
         <div className={styles.lessonsHeader}>
           <h3 className={styles.lessonsTitle}>
             {semester === 'fall' ? 'Fall' : 'Spring'} Semester — {title}
@@ -63,12 +74,14 @@ export default function CoursePage({ level, badge, title, subtitle }: Props) {
           <div className={styles.loading}>Loading lessons…</div>
         ) : lessons.length === 0 ? (
           <div className={styles.empty}>
-            No lessons added yet for this semester. Use &ldquo;Upload Content&rdquo; to add the first lesson.
+            No lessons added yet. Use &ldquo;Upload Content&rdquo; to add the first lesson.
           </div>
         ) : (
-          lessons.map((lesson, i) => (
-            <LessonCard key={lesson.id} lesson={lesson} index={i} />
-          ))
+          <div>
+            {lessons.map((lesson, i) => (
+              <LessonCard key={lesson.id} lesson={lesson} index={i} />
+            ))}
+          </div>
         )}
       </div>
     </div>
