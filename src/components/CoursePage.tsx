@@ -34,7 +34,7 @@ export default function CoursePage({ level, badge, title, subtitle }: Props) {
   }
 
   return (
-    <div>
+    <div style={{ isolation: 'isolate' }}>
       <div className={styles.header}>
         <div className={styles.badge}>{badge}</div>
         <h1 className={styles.title}>{title}</h1>
