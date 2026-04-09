@@ -18,7 +18,7 @@ export default function LessonCard({ lesson, index }: { lesson: Lesson; index: n
   const ytId = lesson.youtube_url ? getYouTubeId(lesson.youtube_url) : null
 
   return (
-    <div className={styles.card}>
+    <div className={styles.card} onClick={(e) => e.stopPropagation()}>
       <button className={styles.head} onClick={(e) => { e.stopPropagation(); setOpen(!open); }}>
         <div className={styles.num}>{index + 1}</div>
         <h4 className={styles.headTitle}>{lesson.title}</h4>
