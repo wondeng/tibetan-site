@@ -66,6 +66,7 @@
   border: 1px solid var(--border);
   border-top: none;
   border-radius: 0 0 12px 12px;
+  pointer-events: none;
 }
 
 .lessonsHeader {
@@ -108,4 +109,7 @@
     border-left: none;
     border-right: none;
   }
+}
+.lessonsArea * {
+  pointer-events: auto;
 }
