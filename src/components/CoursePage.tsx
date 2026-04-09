@@ -35,19 +35,19 @@ export default function CoursePage({ level, badge, title, subtitle }: Props) {
       <div className={styles.tabs}>
         <button
           className={`${styles.tab} ${semester === 'fall' ? styles.active : ''}`}
-          onClick={() => setSemester('fall')}
+          onClick={(e) => { e.stopPropagation(); setSemester('fall') }}
         >
           Fall Semester
         </button>
         <button
           className={`${styles.tab} ${semester === 'spring' ? styles.active : ''}`}
-          onClick={() => setSemester('spring')}
+          onClick={(e) => { e.stopPropagation(); setSemester('spring') }}
         >
           Spring Semester
         </button>
       </div>
 
-      <div className={styles.lessonsArea}>
+      <div className={styles.lessonsArea} onClick={(e) => e.stopPropagation()}>
         <div className={styles.lessonsHeader}>
           <h3 className={styles.lessonsTitle}>
             {semester === 'fall' ? 'Fall' : 'Spring'} Semester — {title}
