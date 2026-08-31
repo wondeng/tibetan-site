@@ -1,6 +1,6 @@
 # Tibetan Language Program — Prof. Sonam
 **Columbia University · MESAAS**
-
+Tibetan Learning Website for Cornell, NYU and Columbia Students
 A Next.js website for the Tibetan Language Program, with Supabase for lesson storage and file uploads, and Vercel for hosting.
 
 ---
